@@ -1,0 +1,37 @@
+total_rows: 1000'000
+read_sample_size: 10'000
+batch_size: 500
+thread_count: 4
+description_length: 600
+rnd_seed: 42
+
+range_window_small: 1
+range_window_medium: 7
+range_window_large: 30
+
+results_dir: "./results"
+
+postgres:
+  host: "localhost"
+  port: 5432
+  username: "bench"
+  password: "bench"
+  database_name: "benchmark"
+  enabled: true
+
+mongo:
+  host: "localhost"
+  port: 27017
+  username: "bench"
+  password: "bench"
+  database_name: "benchmark"
+  enabled: true
+
+cassandra:
+  host: "localhost"
+  port: 9042
+  username: "cassandra"
+  password: "cassandra"
+  database_name: "benchmark"
+  enabled: true
+

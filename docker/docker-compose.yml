@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  #Postgres
+  postgres:
+    image: postgres:16
+    container_name: bench_postgres
+    mem_limit: 2g
+    mem_reservation: 1g
+    envrironent:
+      POSTGRE_USER: bench
+      POSTGRE_PASSWORD: bench
+      POSTGRES_DB: benchmark
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bench -d benchmark"]
+      interval: 25s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    
