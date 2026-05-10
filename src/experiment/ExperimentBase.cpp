@@ -6,7 +6,7 @@
 ExperimentBase::ExperimentBase(DBInterface* db,
     const std::vector<Order>* dataset,
     const BenchmarkConfig& config):
-    db_(db), dataset_(dataset), config_(config), recorder_(config.totalrows){
+    db_(db), dataset_(dataset), config_(config), recorder_(config.total_rows){
         if(!db_) {
             throw:: std::invalid_argument("ExperimentBase: db cannot be null");
         }
@@ -45,7 +45,7 @@ void ExperimentBase::teardown() {
     //TODO
 }
 
-std::vector<Order> ExperimentBase::pick_random_orders(uint64_t n) const {
+std::vector<Order> ExperimentBase::sample_random_orders(uint64_t n) const {
     if (!dataset_ || dataset_->empty()) {
         throw std::runtime_error("sample random orders dataset is empty");
     }

@@ -27,5 +27,5 @@ class ExperimentBase {
     LatencyRecorder recorder_;
     BenchmarkResult result_;
 
-    std::vector<Order> pick_random_orders(uint64_t n) const;
+    std::vector<Order> sample_random_orders(uint64_t n) const;
 };
