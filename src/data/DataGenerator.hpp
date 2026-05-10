@@ -2,20 +2,25 @@
 #include <string>
 #include <vector>
 #include <cstdint>
+#include <random>
 #include "../data/Order.hpp"
 
 class DataGenerator {
     public:
+        static constexpr uint64_t NUM_UNIQUE_USERS = 100'000;
         explicit DataGenerator(uint64_t seed = 42);
         Order generate_one();
         std::vector<Order> generate_n(uint64_t n);
-        std::vector<std::string> generate_random_order_ids(uint64_t n, const std::vector<Order>& dataset);
+        std::vector<std::string> generate_random_order_ids(uint64_t n, 
+            const std::vector<Order>& dataset);
         std::vector<std::string> sample_user_ids(uint64_t n) const;
         std::pair<std::string, std::string> DataGenerator::generate_date_range(
             const std::vector<Order>& dataset, int window_days
         );
 
     private:
+
+        std::vector<std::string> user_id_pool();
         std::string generate_description();
         std::string random_status();
 

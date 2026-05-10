@@ -14,6 +14,11 @@ Experiment2::Experiment2(
     ExperimentBase(db, dataset, config),
     connection_factory_(std::move(connection_factory)){}
 
+void Experiment2::execute() {
+    setup();
+    run();
+    teardown();
+}
 
 void Experiment2::setup() {
     db_->clear_table();

@@ -18,6 +18,8 @@ class Experiment2: public ExperimentBase {
         const BenchmarkConfig& config,
         ConnectionFactory connection_factory);
     
+    void execute();
+    
     protected:
     // calling db cleartable to start clean
     void setup() override;

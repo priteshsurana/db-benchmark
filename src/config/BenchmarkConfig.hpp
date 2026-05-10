@@ -13,7 +13,7 @@ struct BenchmarkConfig {
     uint32_t description_length = 600;
 
     //Todo Range configs
-    int range_window_samll = 1;
+    int range_window_small = 1;
     int range_window_medium = 7;
     int range_window_large = 30;
 
